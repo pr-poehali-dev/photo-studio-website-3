@@ -30,14 +30,6 @@ const Index = () => {
       description: 'Просторная студия с белым циклорамом и естественным освещением'
     },
     {
-      id: 2,
-      name: 'Тёмная студия',
-      image: 'https://cdn.poehali.dev/projects/e9f36f68-dc56-4231-ba80-6b6f2235382d/files/2e7b6956-6614-40ec-a803-5ab0be9a36b3.jpg',
-      category: 'dark',
-      area: '40 м²',
-      description: 'Атмосферная лофт-студия с кирпичными стенами и чёрным фоном'
-    },
-    {
       id: 3,
       name: 'Уютная студия',
       image: 'https://cdn.poehali.dev/projects/e9f36f68-dc56-4231-ba80-6b6f2235382d/files/3a01d8a4-37e4-4249-9a90-d189ead731d6.jpg',
