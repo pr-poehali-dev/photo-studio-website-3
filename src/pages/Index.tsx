@@ -163,39 +163,6 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="about" className="py-20 px-4 bg-secondary/50">
-        <div className="container mx-auto max-w-4xl">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h3 className="text-4xl md:text-5xl font-heading font-semibold mb-6">Обо мне</h3>
-              <p className="text-muted-foreground text-lg mb-4">
-                Привет! Я Анна, фотограф с 7-летним опытом работы. Моя страсть — запечатлеть искренние эмоции и создать для вас воспоминания, которые останутся навсегда.
-              </p>
-              <p className="text-muted-foreground text-lg mb-6">
-                Я работаю в разных жанрах: от нежных свадебных съёмок до динамичных портретов. Каждая фотосессия для меня уникальна, и я всегда стремлюсь найти особенный подход к каждому клиенту.
-              </p>
-              <div className="flex gap-4">
-                <div className="flex items-center gap-2">
-                  <Icon name="Award" size={20} className="text-accent" />
-                  <span>7+ лет опыта</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Icon name="Star" size={20} className="text-accent" />
-                  <span>500+ съёмок</span>
-                </div>
-              </div>
-            </div>
-            <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
-              <img 
-                src="https://cdn.poehali.dev/projects/e9f36f68-dc56-4231-ba80-6b6f2235382d/files/a27f5403-6323-4548-a858-e2a6a7f428ad.jpg"
-                alt="О фотографе"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section id="contact" className="py-20 px-4">
         <div className="container mx-auto max-w-2xl">
           <h3 className="text-4xl md:text-5xl font-heading font-semibold mb-4 text-center">Связаться со мной</h3>
