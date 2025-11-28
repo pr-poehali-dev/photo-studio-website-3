@@ -9,154 +9,128 @@ import { useToast } from '@/hooks/use-toast';
 
 const Index = () => {
   const { toast } = useToast();
-  const [activeFilter, setActiveFilter] = useState('all');
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
-    date: '',
-    time: '',
     service: '',
     message: ''
   });
 
-  const studios = [
+  const portfolio = [
     {
       id: 1,
-      name: 'Светлая студия',
-      image: 'https://cdn.poehali.dev/projects/e9f36f68-dc56-4231-ba80-6b6f2235382d/files/ce1b9372-8f2c-43d5-a1c7-413d09aa995f.jpg',
-      category: 'light',
-      area: '50 м²',
-      description: 'Просторная студия с белым циклорамом и естественным освещением'
+      title: 'Портретная фотосессия',
+      image: 'https://cdn.poehali.dev/projects/e9f36f68-dc56-4231-ba80-6b6f2235382d/files/a27f5403-6323-4548-a858-e2a6a7f428ad.jpg',
+      category: 'portrait'
+    },
+    {
+      id: 2,
+      title: 'Свадебная съёмка',
+      image: 'https://cdn.poehali.dev/projects/e9f36f68-dc56-4231-ba80-6b6f2235382d/files/5bedb00e-0380-4b3b-bf00-93cb07149c03.jpg',
+      category: 'wedding'
     },
     {
       id: 3,
-      name: 'Уютная студия',
-      image: 'https://cdn.poehali.dev/projects/e9f36f68-dc56-4231-ba80-6b6f2235382d/files/3a01d8a4-37e4-4249-9a90-d189ead731d6.jpg',
-      category: 'cozy',
-      area: '35 м²',
-      description: 'Студия в стиле бохо с винтажной мебелью и растениями'
+      title: 'Семейная фотосессия',
+      image: 'https://cdn.poehali.dev/projects/e9f36f68-dc56-4231-ba80-6b6f2235382d/files/70eb9b21-9b7a-450d-b059-75fbc97f36c8.jpg',
+      category: 'family'
     }
   ];
 
   const services = [
-    { name: 'Почасовая аренда студии', price: '2 500 ₽/час', icon: 'Clock' },
-    { name: 'Полный день (8 часов)', price: '15 000 ₽', icon: 'Calendar' },
-    { name: 'Фотосессия с фотографом', price: 'от 5 000 ₽', icon: 'Camera' },
-    { name: 'Видеосъёмка', price: 'от 8 000 ₽', icon: 'Video' }
+    {
+      title: 'Портретная съёмка',
+      price: 'от 5 000 ₽',
+      description: 'Индивидуальная портретная съёмка в студии или на природе',
+      icon: 'User'
+    },
+    {
+      title: 'Свадебная съёмка',
+      price: 'от 25 000 ₽',
+      description: 'Полное сопровождение вашего торжества от сборов до первого танца',
+      icon: 'Heart'
+    },
+    {
+      title: 'Семейная фотосессия',
+      price: 'от 7 000 ₽',
+      description: 'Тёплые семейные кадры, которые сохранят ваши воспоминания',
+      icon: 'Users'
+    },
+    {
+      title: 'Love Story',
+      price: 'от 8 000 ₽',
+      description: 'Романтическая фотосессия для влюблённых пар',
+      icon: 'Heart'
+    }
   ];
-
-  const filteredStudios = activeFilter === 'all' 
-    ? studios 
-    : studios.filter(s => s.category === activeFilter);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     toast({
       title: "Заявка отправлена!",
-      description: "Мы свяжемся с вами в ближайшее время.",
+      description: "Я свяжусь с вами в ближайшее время для обсуждения деталей.",
     });
     setFormData({
       name: '',
       phone: '',
       email: '',
-      date: '',
-      time: '',
       service: '',
       message: ''
     });
   };
 
-  const scrollToSection = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <nav className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b border-border z-50">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <h1 className="text-2xl font-heading font-bold">PHOTO STUDIO</h1>
-            <div className="hidden md:flex gap-8">
-              <button onClick={() => scrollToSection('hero')} className="hover:text-primary transition-colors">Главная</button>
-              <button onClick={() => scrollToSection('gallery')} className="hover:text-primary transition-colors">Галерея</button>
-              <button onClick={() => scrollToSection('services')} className="hover:text-primary transition-colors">Услуги</button>
-              <button onClick={() => scrollToSection('booking')} className="hover:text-primary transition-colors">Бронирование</button>
-              <button onClick={() => scrollToSection('contacts')} className="hover:text-primary transition-colors">Контакты</button>
-            </div>
+    <div className="min-h-screen bg-background">
+      <nav className="fixed top-0 w-full bg-background/95 backdrop-blur-sm border-b border-border z-50">
+        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+          <h1 className="text-2xl font-heading font-semibold">Анна Смирнова</h1>
+          <div className="hidden md:flex gap-8 text-sm">
+            <a href="#portfolio" className="hover:text-accent transition-colors">Портфолио</a>
+            <a href="#services" className="hover:text-accent transition-colors">Услуги</a>
+            <a href="#about" className="hover:text-accent transition-colors">Обо мне</a>
+            <a href="#contact" className="hover:text-accent transition-colors">Контакты</a>
           </div>
         </div>
       </nav>
 
-      <section id="hero" className="pt-32 pb-20 px-4">
-        <div className="container mx-auto text-center">
-          <h2 className="text-7xl md:text-9xl font-heading font-bold mb-6 animate-fade-in">
-            СОЗДАЁМ<br />
-            <span className="text-primary">ШЕДЕВРЫ</span>
+      <section className="pt-32 pb-20 px-4">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-6xl md:text-8xl font-heading font-semibold mb-6 animate-fade-in">
+            Фотограф<br />в Москве
           </h2>
           <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-fade-in">
-            Профессиональные фотостудии с уникальными интерьерами для вашего творчества
+            Создаю живые, эмоциональные кадры, которые хочется пересматривать снова и снова
           </p>
           <Button 
-            onClick={() => scrollToSection('booking')} 
+            onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             size="lg" 
-            className="text-lg px-8 py-6 animate-fade-in"
+            className="text-lg animate-fade-in"
           >
-            Забронировать студию
+            Записаться на съёмку
           </Button>
         </div>
       </section>
 
-      <section id="gallery" className="py-20 px-4 bg-secondary/30">
+      <section id="portfolio" className="py-20 px-4 bg-secondary/50">
         <div className="container mx-auto">
-          <h3 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-center">Наши студии</h3>
-          <p className="text-center text-muted-foreground mb-12 text-lg">Выберите идеальное пространство для вашей съёмки</p>
+          <h3 className="text-4xl md:text-5xl font-heading font-semibold mb-4 text-center">Портфолио</h3>
+          <p className="text-center text-muted-foreground mb-12 text-lg">Мои работы говорят сами за себя</p>
           
-          <div className="flex justify-center gap-4 mb-12 flex-wrap">
-            <Button 
-              variant={activeFilter === 'all' ? 'default' : 'outline'}
-              onClick={() => setActiveFilter('all')}
-            >
-              Все студии
-            </Button>
-            <Button 
-              variant={activeFilter === 'light' ? 'default' : 'outline'}
-              onClick={() => setActiveFilter('light')}
-            >
-              Светлые
-            </Button>
-            <Button 
-              variant={activeFilter === 'dark' ? 'default' : 'outline'}
-              onClick={() => setActiveFilter('dark')}
-            >
-              Тёмные
-            </Button>
-            <Button 
-              variant={activeFilter === 'cozy' ? 'default' : 'outline'}
-              onClick={() => setActiveFilter('cozy')}
-            >
-              Уютные
-            </Button>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredStudios.map((studio) => (
-              <Card key={studio.id} className="overflow-hidden group hover:shadow-2xl transition-shadow duration-300">
-                <div className="relative h-64 overflow-hidden">
+          <div className="grid md:grid-cols-3 gap-6">
+            {portfolio.map((item) => (
+              <Card key={item.id} className="overflow-hidden group cursor-pointer border-0 shadow-lg">
+                <div className="relative h-96 overflow-hidden">
                   <img 
-                    src={studio.image} 
-                    alt={studio.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                </div>
-                <CardContent className="p-6">
-                  <h4 className="text-2xl font-heading font-semibold mb-2">{studio.name}</h4>
-                  <p className="text-muted-foreground mb-3">{studio.description}</p>
-                  <div className="flex items-center gap-2 text-sm text-primary">
-                    <Icon name="Home" size={16} />
-                    <span>{studio.area}</span>
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
+                    <h4 className="text-white text-xl font-heading">{item.title}</h4>
                   </div>
-                </CardContent>
+                </div>
               </Card>
             ))}
           </div>
@@ -164,19 +138,24 @@ const Index = () => {
       </section>
 
       <section id="services" className="py-20 px-4">
-        <div className="container mx-auto">
-          <h3 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-center">Услуги и цены</h3>
-          <p className="text-center text-muted-foreground mb-12 text-lg">Гибкие тарифы для любых задач</p>
+        <div className="container mx-auto max-w-5xl">
+          <h3 className="text-4xl md:text-5xl font-heading font-semibold mb-4 text-center">Услуги</h3>
+          <p className="text-center text-muted-foreground mb-12 text-lg">Индивидуальный подход к каждой съёмке</p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8">
             {services.map((service, idx) => (
-              <Card key={idx} className="text-center p-8 hover:border-primary transition-colors">
+              <Card key={idx} className="p-8 hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-0">
-                  <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Icon name={service.icon} size={32} className="text-primary" />
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 bg-accent/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name={service.icon} size={24} className="text-accent" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-2xl font-heading font-semibold mb-2">{service.title}</h4>
+                      <p className="text-accent font-semibold text-xl mb-3">{service.price}</p>
+                    </div>
                   </div>
-                  <h4 className="text-xl font-heading font-semibold mb-3">{service.name}</h4>
-                  <p className="text-2xl font-bold text-primary">{service.price}</p>
+                  <p className="text-muted-foreground">{service.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -184,23 +163,57 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="booking" className="py-20 px-4 bg-secondary/30">
-        <div className="container mx-auto max-w-2xl">
-          <h3 className="text-4xl md:text-5xl font-heading font-bold mb-4 text-center">Онлайн-бронирование</h3>
-          <p className="text-center text-muted-foreground mb-12 text-lg">Забронируйте студию за пару минут</p>
-          
-          <Card className="p-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label htmlFor="name">Ваше имя</Label>
-                  <Input 
-                    id="name"
-                    value={formData.name}
-                    onChange={(e) => setFormData({...formData, name: e.target.value})}
-                    required
-                  />
+      <section id="about" className="py-20 px-4 bg-secondary/50">
+        <div className="container mx-auto max-w-4xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-4xl md:text-5xl font-heading font-semibold mb-6">Обо мне</h3>
+              <p className="text-muted-foreground text-lg mb-4">
+                Привет! Я Анна, фотограф с 7-летним опытом работы. Моя страсть — запечатлеть искренние эмоции и создать для вас воспоминания, которые останутся навсегда.
+              </p>
+              <p className="text-muted-foreground text-lg mb-6">
+                Я работаю в разных жанрах: от нежных свадебных съёмок до динамичных портретов. Каждая фотосессия для меня уникальна, и я всегда стремлюсь найти особенный подход к каждому клиенту.
+              </p>
+              <div className="flex gap-4">
+                <div className="flex items-center gap-2">
+                  <Icon name="Award" size={20} className="text-accent" />
+                  <span>7+ лет опыта</span>
                 </div>
+                <div className="flex items-center gap-2">
+                  <Icon name="Star" size={20} className="text-accent" />
+                  <span>500+ съёмок</span>
+                </div>
+              </div>
+            </div>
+            <div className="relative h-96 rounded-lg overflow-hidden shadow-2xl">
+              <img 
+                src="https://cdn.poehali.dev/projects/e9f36f68-dc56-4231-ba80-6b6f2235382d/files/a27f5403-6323-4548-a858-e2a6a7f428ad.jpg"
+                alt="О фотографе"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="py-20 px-4">
+        <div className="container mx-auto max-w-2xl">
+          <h3 className="text-4xl md:text-5xl font-heading font-semibold mb-4 text-center">Связаться со мной</h3>
+          <p className="text-center text-muted-foreground mb-12 text-lg">Оставьте заявку, и я свяжусь с вами для обсуждения деталей</p>
+          
+          <Card className="p-8 shadow-xl">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="name">Ваше имя</Label>
+                <Input 
+                  id="name"
+                  value={formData.name}
+                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  required
+                />
+              </div>
+              
+              <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
                   <Label htmlFor="phone">Телефон</Label>
                   <Input 
@@ -211,47 +224,23 @@ const Index = () => {
                     required
                   />
                 </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Label htmlFor="email">Email</Label>
-                <Input 
-                  id="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
-                  required
-                />
-              </div>
-
-              <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <Label htmlFor="date">Дата съёмки</Label>
+                  <Label htmlFor="email">Email</Label>
                   <Input 
-                    id="date"
-                    type="date"
-                    value={formData.date}
-                    onChange={(e) => setFormData({...formData, date: e.target.value})}
-                    required
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="time">Время</Label>
-                  <Input 
-                    id="time"
-                    type="time"
-                    value={formData.time}
-                    onChange={(e) => setFormData({...formData, time: e.target.value})}
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({...formData, email: e.target.value})}
                     required
                   />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="service">Услуга</Label>
+                <Label htmlFor="service">Тип съёмки</Label>
                 <Input 
                   id="service"
-                  placeholder="Например: аренда светлой студии"
+                  placeholder="Например: портретная фотосессия"
                   value={formData.service}
                   onChange={(e) => setFormData({...formData, service: e.target.value})}
                   required
@@ -259,10 +248,11 @@ const Index = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">Дополнительные пожелания</Label>
+                <Label htmlFor="message">Ваши пожелания</Label>
                 <Textarea 
                   id="message"
                   rows={4}
+                  placeholder="Расскажите подробнее о желаемой съёмке..."
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                 />
@@ -273,45 +263,33 @@ const Index = () => {
               </Button>
             </form>
           </Card>
-        </div>
-      </section>
 
-      <section id="contacts" className="py-20 px-4">
-        <div className="container mx-auto text-center">
-          <h3 className="text-4xl md:text-5xl font-heading font-bold mb-4">Контакты</h3>
-          <p className="text-muted-foreground mb-12 text-lg">Мы всегда на связи</p>
-          
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                <Icon name="Phone" size={28} className="text-primary" />
-              </div>
-              <h4 className="font-heading font-semibold text-xl mb-2">Телефон</h4>
-              <p className="text-muted-foreground">+ 7 958 188 57 51</p>
+          <div className="mt-12 text-center space-y-4">
+            <div className="flex justify-center gap-6">
+              <a href="tel:+79991234567" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                <Icon name="Phone" size={20} />
+                <span>+7 (999) 123-45-67</span>
+              </a>
+              <a href="mailto:anna@photo.ru" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
+                <Icon name="Mail" size={20} />
+                <span>anna@photo.ru</span>
+              </a>
             </div>
-            
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                <Icon name="Mail" size={28} className="text-primary" />
-              </div>
-              <h4 className="font-heading font-semibold text-xl mb-2">Email</h4>
-              <p className="text-muted-foreground">info@photostudio.ru</p>
-            </div>
-            
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-                <Icon name="MapPin" size={28} className="text-primary" />
-              </div>
-              <h4 className="font-heading font-semibold text-xl mb-2">Адрес</h4>
-              <p className="text-muted-foreground">г. Москва, ул. Примерная, 123</p>
+            <div className="flex justify-center gap-4">
+              <a href="#" className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                <Icon name="Instagram" size={20} />
+              </a>
+              <a href="#" className="w-10 h-10 bg-secondary rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-colors">
+                <Icon name="Facebook" size={20} />
+              </a>
             </div>
           </div>
         </div>
       </section>
 
       <footer className="border-t border-border py-8 px-4">
-        <div className="container mx-auto text-center text-muted-foreground">
-          <p>© 2024 Photo Studio. Все права защищены.</p>
+        <div className="container mx-auto text-center text-muted-foreground text-sm">
+          <p>© 2024 Анна Смирнова. Фотограф в Москве</p>
         </div>
       </footer>
     </div>
